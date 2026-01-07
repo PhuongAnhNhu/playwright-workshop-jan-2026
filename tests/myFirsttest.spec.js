@@ -1,7 +1,7 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 import { FormPom } from '../POM/formPom';
 
-test.only('Ausfüllen Student Registration Form', async ({ page }) => {
+test('Ausfüllen Student Registration Form', async ({ page }) => {
     const form = new FormPom(page);
     await form.open();
 
@@ -14,7 +14,6 @@ test.only('Ausfüllen Student Registration Form', async ({ page }) => {
     await page.locator('#dateOfBirthInput').click();
     await page.getByRole('combobox').nth(1).selectOption('1996');
     await page.getByRole('option', { name: 'Choose Friday, January 26th,' }).click();
-
 
     await form.subjects.fill('Com');
     await page.getByText('Computer Science', { exact: true }).click();

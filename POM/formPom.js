@@ -15,7 +15,6 @@ export class FormPom {
         this.email = page.getByRole('textbox', { name: 'name@example.com' });
         this.genderFemale = page.getByText('Female');
         this.mobile = page.getByRole('textbox', { name: 'Mobile Number' });
-        this.dateOfBirth = page.locator('#dateOfBirthInput');
         this.subjects = page.locator('#subjectsInput');
 
         // Other controls
