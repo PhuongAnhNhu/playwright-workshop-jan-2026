@@ -3,7 +3,6 @@ import { FormPom } from '../POM/formPom';
 
 test.only('Ausfüllen Student Registration Form', async ({ page }) => {
     const form = new FormPom(page);
-    await page.pause();
     await form.open();
 
     await form.firstName.fill('Phuong Anh');
@@ -12,8 +11,10 @@ test.only('Ausfüllen Student Registration Form', async ({ page }) => {
     await form.genderFemale.click();
     await form.mobile.fill('0123456789');
 
-    await form.dateOfBirth.fill('26.01.1996');
-    await page.keyboard.press('Enter');
+    await page.locator('#dateOfBirthInput').click();
+    await page.getByRole('combobox').nth(1).selectOption('1996');
+    await page.getByRole('option', { name: 'Choose Friday, January 26th,' }).click();
+
 
     await form.subjects.fill('Com');
     await page.getByText('Computer Science', { exact: true }).click();
